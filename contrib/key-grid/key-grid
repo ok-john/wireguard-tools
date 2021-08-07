@@ -8,7 +8,7 @@ trap $(mkdir -p $_dir) EXIT
 
 function _collect
 {
-			cat ./grid | grep "function __*" | sed 's/function __/       /g' | tail -n +3
+			cat ./$0 | grep "function __*" | sed 's/function __/       /g' | tail -n +3
 }
 
 function __help
@@ -103,4 +103,4 @@ function __select
 			done
 }
 
-trap $(__$_f) EXIT
+__$_f
