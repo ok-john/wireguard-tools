@@ -3,12 +3,12 @@ readonly _f=${1:-"help"}
 readonly _size=${2:-8}
 readonly _dir=${3:-"$HOME/.wg"}
 readonly _out=${4:-"keys.enc"}
-readonly _n=$(( $(( $_size / 2 )) - 1 ))
+readonly _n=$(( $(( $_size / 2 )) ))
 trap $(mkdir -p $_dir) EXIT
 
 function _collect
 {
-			cat ./grid | grep "function __*" | sed 's/function __/       /g' | tail -n +3
+			cat ./$0 | grep "function __*" | sed 's/function __/       /g' | tail -n +3
 }
 
 function __help
@@ -72,7 +72,7 @@ function __fill
 
 function __ls
 {
-			ls $_dir/*
+			ls -d $_dir/*/* | tr -d ': '
 }
 
 function __fmt
@@ -103,4 +103,4 @@ function __select
 			done
 }
 
-trap $(__$_f) EXIT
+__$_f
