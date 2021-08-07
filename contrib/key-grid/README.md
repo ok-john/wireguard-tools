@@ -1,7 +1,10 @@
-## gen-wg
+## key-grid
+
+Given n, key-grid creates an (n^2)  Generates an 
+
 
 ```bash
-grid [ function ] [ size ]
+key-grid [ function ] [ size ]
        help
        decrypt
        encrypt
@@ -14,3 +17,5 @@ grid [ function ] [ size ]
        select
 ```
 [![asciicast](https://asciinema.org/a/429268.svg)](https://asciinema.org/a/429268)
+
+
