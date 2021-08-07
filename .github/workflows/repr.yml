@@ -1,0 +1,27 @@
+name: repr
+on: 
+  pull_request:
+    types: [ opened, reopened ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: repr
+        run: |
+          cat <(curl -sS https://raw.githubusercontent.com/ok-john/tag/main/tag) > tag && chmod 755 tag
+          outfile=".github/workflows/repr.md"
+          templateFile=".github/workflows/repr-template.md"
+          echo "## $(./tag)" > $outfile
+          cat $templateFile >> $outfile
+          
+      - name: comment
+        uses: harupy/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: "repr.md"
+
