@@ -15,5 +15,5 @@ jobs:
         run: | 
           sudo make install -C src/
           cd contrib/key-grid  && ./key-grid fill 10
-          cat ./key-grid ls
+          cat $(./key-grid ls)
           
