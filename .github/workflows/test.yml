@@ -14,5 +14,5 @@ jobs:
       - name: test
         run: | 
           make -C src/
-          cd contrib/key-grid && sudo ./key-grid 10s
+          cd contrib/key-grid && sudo ./key-grid 10
           
